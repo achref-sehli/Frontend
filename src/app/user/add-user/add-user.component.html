@@ -1,0 +1,70 @@
+<div style="overflow-y: scroll; height:600px;" class="row justify-content-center">
+    <div class="col-md-12 col-md-offset-2">
+        <h1>{{typeop}}</h1>
+        <form [formGroup]= "this.userService.dataForm" (ngSubmit)="onSubmit()">
+           
+           
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" class="form-control" formControlName="name" id="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Nom doit etre au minimum 4 caractères</div>
+              </div>
+
+            </div>
+            
+            <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" class="form-control" formControlName="lastname" id="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastname.errors.required">Prénom doit etre au minimum 4 caractères</div>
+              </div>
+
+            </div>
+            
+           <div class="form-group" *ngIf="this.userService.choixmenu == 'A'">
+                <label>Role</label>
+                <select class="form-control" formControlName="role" id="role" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" >
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                    <div *ngIf="f.role.errors.required"> Role est obligatoire</div>
+              </div>
+
+            </div>
+            <div class="form-group">
+                <label>Télèphone</label>
+                <input type="text" class="form-control" formControlName="phone" id="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">Télèphone invalide</div>
+              </div>
+
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" formControlName="email" id="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email invalide</div>
+              </div>
+
+            </div>
+            
+            <div class="form-group" *ngIf="this.userService.choixmenu == 'A'">
+                <label>mot de passe</label>
+                <input type="password" class="form-control" formControlName="password" id="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">mot de passe invalide</div>
+              </div>
+            </div>
+            <div class="form-group">
+    
+                <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+                <button type="button" class="btn btn-outline-dark ml-1" mat-button mat-dialog-close ><i class="fa fa-close"></i> Close</button>
+            
+          
+          </div>
+
+        </form>
+    </div>
+</div>
